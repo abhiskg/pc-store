@@ -1,11 +1,11 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 
-import toast from "react-hot-toast";
-import { z } from "zod";
-import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { z } from "zod";
 
-import axios from "axios";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import Link from "next/link";
 
 const RegisterSchema = z.object({
@@ -49,7 +49,7 @@ const Register = () => {
               <label htmlFor="name" className="block text-sm">
                 Full Name
               </label>
-              <input
+              <Input
                 type="text"
                 id="name"
                 {...register("name")}
@@ -62,19 +62,10 @@ const Register = () => {
               )}
             </div>
             <div className="space-y-2">
-              <label htmlFor="name" className="block text-sm">
-                Your Role
-              </label>
-              <select {...register("role")} id="" className="input-form">
-                <option value="buyer">Buyer</option>
-                <option value="seller">Seller</option>
-              </select>
-            </div>
-            <div className="space-y-2">
               <label htmlFor="email" className="block text-sm">
                 Email address
               </label>
-              <input
+              <Input
                 type="email"
                 {...register("email")}
                 id="email"
@@ -90,7 +81,7 @@ const Register = () => {
               <label htmlFor="password" className="text-sm">
                 Password
               </label>
-              <input
+              <Input
                 type="password"
                 {...register("password")}
                 disabled={loading}
@@ -103,14 +94,9 @@ const Register = () => {
               )}
             </div>
           </div>
-          <button
-            type="submit"
-            className={`auth-button grid place-items-center ${
-              loading && "cursor-not-allowed"
-            }`}
-          >
+          <Button type="submit" className="w-full">
             Register
-          </button>
+          </Button>
         </form>
 
         <p className="text-center text-sm dark:text-gray-400">
