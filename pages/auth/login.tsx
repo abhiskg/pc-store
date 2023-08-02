@@ -4,6 +4,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
 
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import Link from "next/link";
 // import { getAccessToken } from "../../utils/manageAccessToken";
 
@@ -50,7 +52,7 @@ const Login = () => {
               <label htmlFor="email" className="block text-sm">
                 Email address
               </label>
-              <input
+              <Input
                 type="email"
                 {...register("email")}
                 id="email"
@@ -74,7 +76,7 @@ const Login = () => {
                   Forgot password?
                 </a>
               </div>
-              <input
+              <Input
                 type="password"
                 {...register("password")}
                 id="password"
@@ -86,14 +88,9 @@ const Login = () => {
               )}
             </div>
           </div>
-          <button
-            type="submit"
-            className={`auth-button grid place-items-center ${
-              loading && "cursor-not-allowed"
-            }`}
-          >
+          <Button className="w-full" type="submit">
             Login
-          </button>
+          </Button>
         </form>
 
         <div className="my-2 flex w-full items-center">
