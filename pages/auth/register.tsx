@@ -1,6 +1,6 @@
-import { useState } from "react";
-
 import { zodResolver } from "@hookform/resolvers/zod";
+import axios from "axios";
+import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
 
@@ -11,10 +11,9 @@ import Link from "next/link";
 const RegisterSchema = z.object({
   name: z.string().min(1, { message: "Please Enter your name" }),
   email: z.string().email({ message: "Invalid Email" }),
-  role: z.string(),
   password: z
     .string()
-    .min(8, { message: "Password Should be minimum 8 char long" }),
+    .min(6, { message: "Password Should be minimum 6 char long" }),
 });
 
 type RegisterSchemaType = z.infer<typeof RegisterSchema>;
@@ -31,7 +30,8 @@ const Register = () => {
     resolver: zodResolver(RegisterSchema),
   });
 
-  const onSubmit: SubmitHandler<RegisterSchemaType> = (data) => {
+  const onSubmit: SubmitHandler<RegisterSchemaType> = async (payload) => {
+    const { data } = await axios.post("/api/user", payload);
     console.log(data);
   };
 
