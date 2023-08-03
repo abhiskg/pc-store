@@ -1,5 +1,6 @@
 import { IProduct } from "@/backend/interfaces/productType";
 import Image from "next/image";
+import Link from "next/link";
 import { Button } from "../ui/button";
 
 function ProductCard({ product }: { product: IProduct }) {
@@ -19,7 +20,9 @@ function ProductCard({ product }: { product: IProduct }) {
         <p className="mt-1 text-sm text-gray-600">{product.description}</p>
         <div className="font-semibold mt-1">Price:{product.price}</div>
         <div className="font-semibold mt-1">Status:{product.status}</div>
-        <Button className="w-full mt-3">Read More</Button>
+        <Button className="w-full mt-3" asChild>
+          <Link href={`/products/${product._id}`}>Read More</Link>
+        </Button>
       </div>
     </div>
   );
