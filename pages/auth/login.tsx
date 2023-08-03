@@ -6,6 +6,7 @@ import { z } from "zod";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { signIn } from "next-auth/react";
 import Link from "next/link";
 // import { getAccessToken } from "../../utils/manageAccessToken";
 
@@ -16,7 +17,7 @@ const LoginSchema = z.object({
     .email({ message: "Invalid Email" }),
   password: z
     .string()
-    .min(8, { message: "Password Should be minimum 8 char long" }),
+    .min(6, { message: "Password Should be minimum 6 char long" }),
 });
 
 type LoginSchemaType = z.infer<typeof LoginSchema>;
@@ -35,7 +36,15 @@ const Login = () => {
   });
 
   const onSubmit: SubmitHandler<LoginSchemaType> = (data) => {
-    console.log(data);
+    try {
+      signIn("credentials", {
+        email: data.email,
+        password: data.password,
+        callbackUrl: "/",
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
