@@ -13,7 +13,7 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-40 h-16 border-b bg-secondary">
       <nav className="custom-container mx-auto  flex h-full items-center justify-between">
-        <h1>PC Baba</h1>
+        <Link href="/">PC Store</Link>
         <div className="flex gap-3">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
