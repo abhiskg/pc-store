@@ -83,7 +83,7 @@ ProductDetails.getLayout = function getLayout(page: ReactElement) {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const { data } = await axios(`${process.env.URL}/api/products?home=true`);
+  const { data } = await axios(`${process.env.URL}/api/products`);
   const products = data.data as IProduct[];
 
   const paths = products.map((product) => ({
