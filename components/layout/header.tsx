@@ -17,7 +17,7 @@ export default function Header() {
     <header className="sticky top-0 z-40 h-16 border-b bg-secondary">
       <nav className="custom-container mx-auto  flex h-full items-center justify-between">
         <Link href="/" className="text-2xl font-semibold">
-          PC Store
+          PC STORE
         </Link>
         <div className="flex gap-3">
           <DropdownMenu>
@@ -41,10 +41,12 @@ export default function Header() {
             <Link href="/pc-builder">PC Builder</Link>
           </Button>
 
-          <Button asChild>
-            <Link href="/auth/login">Login</Link>
-          </Button>
-          <Button onClick={() => signOut()}>Logout</Button>
+          {!data?.user && (
+            <Button asChild>
+              <Link href="/auth/login">Login</Link>
+            </Button>
+          )}
+          {data?.user && <Button onClick={() => signOut()}>Logout</Button>}
         </div>
       </nav>
     </header>

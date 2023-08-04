@@ -12,8 +12,8 @@ const ProductDetails = ({
   console.log(product);
   return (
     <section className="overflow-hidden">
-      <div className="mx-auto max-w-5xl px-5 py-24">
-        <div className="mx-auto flex  items-start lg:w-4/5">
+      <div className="mx-auto max-w-7xl py-24">
+        <div className="mx-auto flex md:flex-row flex-col items-start ">
           <div className="w-64 h-64 relative">
             <Image src={product.image} alt="dad" fill className="w-full" />
           </div>

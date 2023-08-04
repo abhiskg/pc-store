@@ -10,7 +10,7 @@ function ProductCategory({
   products,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
-    <div className="grid grid-cols-3 gap-3 mt-10 ">
+    <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1s gap-3 mt-10 ">
       {products.map((product) => (
         <ProductCard product={product} key={product._id} />
       ))}
