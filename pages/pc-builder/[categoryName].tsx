@@ -1,14 +1,22 @@
-import { ICategory } from "@/backend/interfaces/categoryType";
+import { IProduct } from "@/backend/interfaces/productType";
+import ComponentCard from "@/components/card/componentCard";
 import Layout from "@/components/layout/layout";
 import axios from "axios";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import { ReactElement } from "react";
 
 function PcBuilderComponent({
-  categories,
+  products,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
-  console.log(categories);
-  return <div>PcBuilderComponent</div>;
+  return (
+    <div className=" my-10">
+      <div className="space-y-3">
+        {products.map((product) => (
+          <ComponentCard key={product._id} product={product} />
+        ))}
+      </div>
+    </div>
+  );
 }
 
 export default PcBuilderComponent;
@@ -18,7 +26,7 @@ PcBuilderComponent.getLayout = function getLayout(page: ReactElement) {
 };
 
 export const getServerSideProps: GetServerSideProps<{
-  categories: ICategory[];
+  products: IProduct[];
 }> = async ({ params }) => {
   if (!params || !params.categoryName) {
     return {
@@ -31,7 +39,7 @@ export const getServerSideProps: GetServerSideProps<{
 
   return {
     props: {
-      categories: data.data,
+      products: data.data,
     },
   };
 };

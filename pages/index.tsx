@@ -10,7 +10,7 @@ const HomePage = ({
   products,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
-    <div className="custom-container mx-auto">
+    <div>
       <HeroSection />
 
       <div className="grid grid-cols-3 gap-3">

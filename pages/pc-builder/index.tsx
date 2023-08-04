@@ -9,7 +9,7 @@ const PcBuilderPage = ({
   categories,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   return (
-    <div className="space-y-2 custom-container mx-auto mt-5">
+    <div className="space-y-2  mt-5">
       {categories.map((category) => (
         <CategoryCard key={category._id} category={category} />
       ))}
