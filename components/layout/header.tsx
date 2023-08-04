@@ -6,6 +6,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { categoryData } from "@/constants/categoryConstant";
 import Link from "next/link";
 import { Button } from "../ui/button";
 
@@ -22,13 +23,13 @@ export default function Header() {
             <DropdownMenuContent>
               <DropdownMenuLabel>Categories</DropdownMenuLabel>
               <DropdownMenuSeparator />
-              <DropdownMenuItem>CPU/Processor</DropdownMenuItem>
-              <DropdownMenuItem>Motherboard</DropdownMenuItem>
-              <DropdownMenuItem>RAM</DropdownMenuItem>
-              <DropdownMenuItem>Power Supply Unit</DropdownMenuItem>
-              <DropdownMenuItem>Storage Device</DropdownMenuItem>
-              <DropdownMenuItem>Monitor</DropdownMenuItem>
-              <DropdownMenuItem>Others</DropdownMenuItem>
+              {categoryData.map((category) => (
+                <DropdownMenuItem key={category.href} asChild>
+                  <Link href={`/categories/${category.href}`}>
+                    {category.name}
+                  </Link>
+                </DropdownMenuItem>
+              ))}
             </DropdownMenuContent>
           </DropdownMenu>
 
