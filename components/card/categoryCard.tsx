@@ -1,5 +1,6 @@
 import { ICategory } from "@/backend/interfaces/categoryType";
 import Image from "next/image";
+import Link from "next/link";
 import { Button } from "../ui/button";
 import { Card } from "../ui/card";
 
@@ -16,7 +17,9 @@ function CategoryCard({ category }: { category: ICategory }) {
             </span>
           </h2>
         </div>
-        <Button>Choose</Button>
+        <Button>
+          <Link href={`/pc-builder/${category.name}`}>Choose</Link>
+        </Button>
       </div>
     </Card>
   );
