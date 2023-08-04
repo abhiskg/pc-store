@@ -1,4 +1,5 @@
 import { IProduct } from "@/backend/interfaces/productType";
+import { Star } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "../ui/button";
@@ -15,13 +16,22 @@ function ProductCard({ product }: { product: IProduct }) {
         />
       </div>
       <div className="px-4 py-1">
-        <div className="text-sm">{product.category}</div>
+        <div className="flex justify-between">
+          <div className="text-sm bg-gray-500 text-gray-50 px-1 py-px rounded ">
+            {product.category}
+          </div>
+          <div className="font-semibold mt-1 text-sm">{product.status}</div>
+        </div>
         <h1 className="text-lg font-semibold">{product.name}</h1>
         <p className="mt-1 text-sm text-gray-600">{product.description}</p>
+        <div className="flex gap-1 my-1">
+          {[...Array(product.ratings)].map((_, i) => (
+            <Star key={i} size={16} className="text-yellow-500" />
+          ))}
+        </div>
         <div className="font-semibold mt-1">Price:{product.price}</div>
-        <div className="font-semibold mt-1">Status:{product.status}</div>
         <Button className="w-full mt-3" asChild>
-          <Link href={`/products/${product._id}`}>Read More</Link>
+          <Link href={`/products/${product._id}`}>View Details</Link>
         </Button>
       </div>
     </div>

@@ -25,7 +25,7 @@ ProductCategory.getLayout = function getLayout(page: ReactElement) {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const { data } = await axios(`${process.env.URL}/api/categories`);
+  const { data } = await axios.get(`${process.env.URL}/api/categories`);
   const categories = data.data as ICategory[];
 
   const paths = categories.map((category) => ({

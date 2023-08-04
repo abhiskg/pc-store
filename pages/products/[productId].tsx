@@ -3,6 +3,7 @@ import Layout from "@/components/layout/layout";
 import axios from "axios";
 import { Star } from "lucide-react";
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
+import Image from "next/image";
 import { ReactElement } from "react";
 
 const ProductDetails = ({
@@ -12,12 +13,10 @@ const ProductDetails = ({
   return (
     <section className="overflow-hidden">
       <div className="mx-auto max-w-5xl px-5 py-24">
-        <div className="mx-auto flex flex-wrap items-center lg:w-4/5">
-          <img
-            alt="Nike Air Max 21A"
-            className="h-64 w-full rounded object-cover lg:h-96 lg:w-1/2"
-            src={product.image}
-          />
+        <div className="mx-auto flex  items-start lg:w-4/5">
+          <div className="w-64 h-64 relative">
+            <Image src={product.image} alt="dad" fill className="w-full" />
+          </div>
           <div className="mt-6 w-full lg:mt-0 lg:w-1/2 lg:pl-10">
             <h2 className="text-sm font-semibold tracking-widest text-gray-500">
               {product.category}
@@ -83,7 +82,7 @@ ProductDetails.getLayout = function getLayout(page: ReactElement) {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const { data } = await axios(`${process.env.URL}/api/products`);
+  const { data } = await axios.get(`${process.env.URL}/api/products`);
   const products = data.data as IProduct[];
 
   const paths = products.map((product) => ({
@@ -103,7 +102,7 @@ export const getStaticProps: GetStaticProps<{
       notFound: true,
     };
   }
-  const { data } = await axios(
+  const { data } = await axios.get(
     `${process.env.URL}/api/products/${params.productId}`
   );
 

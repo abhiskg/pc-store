@@ -6,7 +6,7 @@ import { Card } from "../ui/card";
 function ComponentCard({ product }: { product: IProduct }) {
   return (
     <Card className="flex justify-between gap-10 max-w-xl mx-auto">
-      <div className="aspect-square w-full  relative">
+      <div className="h-40 w-40  relative">
         <Image src={product.image} alt="dad" fill className="w-full" />
       </div>
 

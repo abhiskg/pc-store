@@ -31,7 +31,7 @@ HomePage.getLayout = function getLayout(page: ReactElement) {
 export const getStaticProps: GetStaticProps<{
   products: IProduct[];
 }> = async () => {
-  const data = await axios(`${process.env.URL}/api/products?home=true`);
+  const data = await axios.get(`${process.env.URL}/api/products?home=true`);
   const products = data.data;
 
   return {
