@@ -1,4 +1,5 @@
 import { ICategory } from "@/backend/interfaces/categoryType";
+import CategoryCard from "@/components/card/categoryCard";
 import Layout from "@/components/layout/layout";
 import axios from "axios";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
@@ -7,8 +8,13 @@ import { ReactElement } from "react";
 const PcBuilderPage = ({
   categories,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  console.log(categories);
-  return <div>PcBuilderPage</div>;
+  return (
+    <div className="space-y-2 custom-container mx-auto mt-5">
+      {categories.map((category) => (
+        <CategoryCard key={category._id} category={category} />
+      ))}
+    </div>
+  );
 };
 
 export default PcBuilderPage;
