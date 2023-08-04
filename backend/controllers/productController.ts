@@ -33,6 +33,14 @@ export const getProducts = async (
   }
 };
 
+export const getProduct = async (req: NextApiRequest, res: NextApiResponse) => {
+  const product = await Product.findById(req.query.id);
+
+  res.status(200).json({
+    data: product,
+  });
+};
+
 export const createProduct = async (
   req: NextApiRequest,
   res: NextApiResponse
