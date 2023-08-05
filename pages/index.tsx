@@ -41,6 +41,14 @@ export const getStaticProps: GetStaticProps<{
   products: IProduct[];
   categories: ICategory[];
 }> = async () => {
+  // if (typeof window === "undefined") {
+  //   return {
+  //     props: {
+  //       products: [],
+  //       categories: [],
+  //     },
+  //   };
+  // }
   const productData = await axios.get(
     `${process.env.URL}/api/products?home=true`
   );

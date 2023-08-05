@@ -2,7 +2,13 @@ import type { Model } from "mongoose";
 
 export type ICategory = {
   _id: string;
-  name: string;
+  name:
+    | "Motherboard"
+    | "Monitor"
+    | "Power_Supply_Unit"
+    | "Processor"
+    | "RAM"
+    | "Storage_Device";
   image: string;
 };
 
