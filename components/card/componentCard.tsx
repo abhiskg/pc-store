@@ -1,7 +1,7 @@
 import { IProduct } from "@/backend/interfaces/productType";
 import { addComponent } from "@/redux/features/pcBuilderSlice";
 import { useAppDispatch } from "@/redux/hook";
-import { Star } from "lucide-react";
+
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { Button } from "../ui/button";
@@ -23,11 +23,7 @@ function ComponentCard({ product }: { product: IProduct }) {
         </div>
         <h1 className=" text-lg font-semibold ">{product.name}</h1>
         <div className="mt-2 ">
-          <div className="flex gap-1 my-1">
-            {[...Array(product.ratings)].map((_, i) => (
-              <Star key={i} size={16} className="text-yellow-500" />
-            ))}
-          </div>
+          <div className="mt-1">Ratings:{product.ratings}</div>
           <div className="mt-1">Status: {product.status}</div>
           <div className="mt-2">Price: {product.price}</div>
         </div>

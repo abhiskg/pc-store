@@ -43,5 +43,13 @@
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.0"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.es.js"
+    },
+    "./*": {
+      "import": "./dist/icons/*.es.js"
+    }
   }
 }

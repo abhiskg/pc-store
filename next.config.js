@@ -4,6 +4,11 @@ const nextConfig = {
   images: {
     domains: ["images.unsplash.com", "res.cloudinary.com"],
   },
+  modularizeImports: {
+    "@phosphor-icons/react": {
+      transform: "@phosphor-icons/react/dist/icons/{{member}}",
+    },
+  },
   // images: {
   //   remotePatterns: [
   //     {
