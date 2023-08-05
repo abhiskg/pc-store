@@ -2,7 +2,7 @@
 
 ## Live Link:
 
-https://pc-store-abhiskg.vercel.app/
+https://pc-store-eta.vercel.app/
 
 ## Github Link:
 
