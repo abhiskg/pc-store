@@ -48,6 +48,16 @@ const Login = () => {
     }
   };
 
+  const handleGithubLogin = () => {
+    try {
+      signIn("github", {
+        callbackUrl: "/",
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div>
       <div className="mx-auto my-10 w-full max-w-md rounded-md bg-white p-4 shadow dark:bg-gray-900 dark:text-gray-100 sm:p-8">
@@ -111,7 +121,11 @@ const Login = () => {
           <hr className="w-full dark:text-gray-400" />
         </div>
 
-        <div className="my-3 flex gap-3">Google</div>
+        <div className="my-3 flex items-center justify-center">
+          <Button type="button" onClick={handleGithubLogin}>
+            Github
+          </Button>
+        </div>
 
         <p className="text-center text-sm dark:text-gray-400 mt-2">
           Not a member?{" "}
